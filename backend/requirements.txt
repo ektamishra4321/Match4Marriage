@@ -1,0 +1,39 @@
+# ── Slimmed for Vercel Python serverless (50MB bundle limit) ─────────────────
+# Heavy/optional deps (boto3, anthropic, openai, pinecone, twilio, stripe,
+# razorpay, vedastro, celery, pillow) removed for launch. Re-add when needed
+# OR move that workload to a separate Vercel function / external service.
+
+# Web framework
+fastapi==0.115.5
+
+# Database
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
+
+# Validation
+pydantic==2.10.1
+pydantic-settings==2.6.1
+email-validator==2.2.0
+
+# Auth
+firebase-admin==6.5.0
+httpx==0.28.0
+
+# Redis (graceful fallback to fakeredis if REDIS_URL unset/unreachable)
+redis[hiredis]==5.2.0
+fakeredis[aioredis]>=2.0.0
+
+# Storage / payments / SMS / AI — minimal stubs only
+cloudinary==1.41.0     # signed-URL generation for direct browser uploads
+resend==2.10.0         # transactional email (small dep)
+
+# Logging
+structlog==24.4.0
+
+# Rate limiting (in-memory on serverless — best-effort)
+slowapi==0.1.9
+
+# Utilities
+python-multipart==0.0.18
+python-dotenv==1.0.1
